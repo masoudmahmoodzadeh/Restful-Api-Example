@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:restful_api_example/screens/trade/trade_screen.dart';
+import 'package:restful_api_example/screens/trade_screen.dart';
 
 import '../apis/base/api_manager.dart';
 import '../apis/base/response_callback.dart';

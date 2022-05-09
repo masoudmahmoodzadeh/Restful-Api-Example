@@ -3,8 +3,8 @@ import 'package:restful_api_example/apis/list_crypto/list_crypto_response.dart';
 import 'package:restful_api_example/apis/list_trade/list_trade_request.dart';
 import 'package:restful_api_example/apis/list_trade/list_trade_response.dart';
 
-import '../../apis/base/api_manager.dart';
-import '../../apis/base/response_callback.dart';
+import '../apis/base/api_manager.dart';
+import '../apis/base/response_callback.dart';
 
 class TradeScreen extends StatefulWidget {
   final ListCryptoResponse crypto;
