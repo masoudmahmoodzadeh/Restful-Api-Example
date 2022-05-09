@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restful_api_example/base/base_colors.dart';
 import 'package:restful_api_example/screens/crypto_screen.dart';
 
 void main() {
@@ -13,6 +14,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Restful Api Example',
       theme: ThemeData(
+        scaffoldBackgroundColor: BaseColors.primary,
+        cardTheme: CardTheme(
+          color: BaseColors.card,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
         primarySwatch: Colors.blue,
       ),
       home: const CryptoScreen(),

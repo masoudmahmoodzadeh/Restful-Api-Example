@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restful_api_example/base/base_colors.dart';
 import 'package:restful_api_example/screens/trade_screen.dart';
 
 import '../apis/base/api_manager.dart';
@@ -46,19 +47,52 @@ class _CryptoScreenState extends State<CryptoScreen> {
                         },
                       ));
                     },
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(item.symbol),
-                        const SizedBox(height: 16),
-                        Text(item.price),
-                      ],
+                    child: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 16, horizontal: 16),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              width: 50,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                color: BaseColors.primary,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: const Icon(
+                                Icons.ac_unit,
+                                color: Colors.white,
+                              ),
+                            ),
+                            SizedBox(width: 16),
+                            Expanded(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(item.symbol,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                      )),
+                                  const SizedBox(height: 16),
+                                  Text(item.price,
+                                      style: const TextStyle(
+                                        color: BaseColors.greenLight,
+                                      )),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) {
                   return const Divider(
-                    color: Colors.blue,
+                    color: Colors.transparent,
                     thickness: 1,
                   );
                 },
