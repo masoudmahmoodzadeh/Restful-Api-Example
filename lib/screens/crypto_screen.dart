@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restful_api_example/screens/trade/trade_screen.dart';
 
 import '../apis/base/api_manager.dart';
 import '../apis/base/response_callback.dart';
@@ -35,13 +36,24 @@ class _CryptoScreenState extends State<CryptoScreen> {
                 itemCount: listCrypto.length,
                 itemBuilder: (context, index) {
                   ListCryptoResponse item = listCrypto[index];
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(item.symbol),
-                      const SizedBox(height: 16),
-                      Text(item.price),
-                    ],
+                  return InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return TradeScreen(
+                            crypto: item,
+                          );
+                        },
+                      ));
+                    },
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(item.symbol),
+                        const SizedBox(height: 16),
+                        Text(item.price),
+                      ],
+                    ),
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) {
