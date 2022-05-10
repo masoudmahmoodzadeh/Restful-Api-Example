@@ -17,7 +17,7 @@ class AppRoutes {
       ),
       GetPage(
         name: listTrade,
-        page: () => const TradeScreen(),
+        page: () => TradeScreen(),
         binding: TradeBinding(),
       )
     ];
