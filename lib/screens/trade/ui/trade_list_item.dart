@@ -72,12 +72,9 @@ class TradeListItem extends StatelessWidget {
   }
 
   Widget _buildValue(String value) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 16),
-      child: Text(
-        value,
-        style: const TextStyle(color: Colors.white),
-      ),
+    return Text(
+      value,
+      style: const TextStyle(color: Colors.white),
     );
   }
 }
