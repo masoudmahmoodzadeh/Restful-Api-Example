@@ -1,3 +1,5 @@
+import 'package:date_format/date_format.dart';
+
 class ListTradeResponse {
   final int id;
   final String price;
@@ -31,4 +33,18 @@ class ListTradeResponse {
         'isBuyerMaker': isBuyerMaker,
         'isBestMatch': isBestMatch,
       };
+
+  String getTime() {
+    return formatDate(DateTime.fromMicrosecondsSinceEpoch(time * 1000), [
+      yyyy,
+      '-',
+      mm,
+      '-',
+      dd,
+      ' ',
+      HH,
+      ':',
+      nn,
+    ]);
+  }
 }

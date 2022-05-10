@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:restful_api_example/screens/crypto/data/source/remote/list_crypto_response.dart';
 import 'package:restful_api_example/screens/trade/data/source/remote/list_trade_response.dart';
 import 'package:restful_api_example/screens/trade/ui/trade_controller.dart';
+import 'package:restful_api_example/screens/trade/ui/trade_list_item.dart';
 
 class TradeScreen extends StatelessWidget {
   final controller = Get.find<TradeController>();
@@ -17,7 +18,7 @@ class TradeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Trades"),
+        title: Text(crypto.symbol),
       ),
       body: Obx(
         () => Center(
@@ -28,26 +29,11 @@ class TradeScreen extends StatelessWidget {
                   itemCount: controller.listTrade.length,
                   itemBuilder: (context, index) {
                     ListTradeResponse item = controller.listTrade[index];
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(item.time.toString()),
-                        const SizedBox(height: 16),
-                        Text(item.price),
-                        const SizedBox(height: 16),
-                        Text(item.qty),
-                        const SizedBox(height: 16),
-                        Text(item.quoteQty),
-                        const SizedBox(height: 16),
-                        Text(item.isBuyerMaker.toString()),
-                        const SizedBox(height: 16),
-                        Text(item.isBestMatch.toString()),
-                      ],
-                    );
+                    return TradeListItem(item: item);
                   },
                   separatorBuilder: (BuildContext context, int index) {
                     return const Divider(
-                      color: Colors.blue,
+                      color: Colors.transparent,
                       thickness: 1,
                     );
                   },

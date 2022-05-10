@@ -15,6 +15,6 @@ class TradeController extends GetxController {
 
   void _getListTrade() {
     GetListTradeUseCase()
-        .getListTrade(crypto.symbol, 100, (data) => listTrade.value = data);
+        .getListTrade(crypto.symbol, 20, (data) => listTrade.value = data);
   }
 }

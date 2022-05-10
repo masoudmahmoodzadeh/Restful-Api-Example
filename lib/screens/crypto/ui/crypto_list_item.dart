@@ -38,7 +38,7 @@ class CryptoListItem extends StatelessWidget {
                             style: const TextStyle(
                               color: Colors.white,
                             )),
-                        Text(item.price,
+                        Text('\$ ' + item.price,
                             style: const TextStyle(
                               color: BaseColors.greenLight,
                             )),
