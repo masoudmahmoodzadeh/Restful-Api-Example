@@ -5,6 +5,8 @@ import 'package:restful_api_example/screens/trade/data/source/remote/list_trade_
 import 'package:restful_api_example/screens/trade/ui/trade_controller.dart';
 import 'package:restful_api_example/screens/trade/ui/trade_list_item.dart';
 
+import '../../../base/custom_app_bar.dart';
+
 class TradeScreen extends StatelessWidget {
   final controller = Get.find<TradeController>();
 
@@ -16,28 +18,28 @@ class TradeScreen extends StatelessWidget {
         ModalRoute.of(context)!.settings.arguments as ListCryptoResponse;
     controller.crypto = crypto;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(crypto.symbol),
-      ),
-      body: Obx(
-        () => Center(
-          child: controller.listTrade.isEmpty
-              ? const CircularProgressIndicator()
-              : ListView.separated(
-                  padding: const EdgeInsets.all(16),
-                  itemCount: controller.listTrade.length,
-                  itemBuilder: (context, index) {
-                    ListTradeResponse item = controller.listTrade[index];
-                    return TradeListItem(item: item);
-                  },
-                  separatorBuilder: (BuildContext context, int index) {
-                    return const Divider(
-                      color: Colors.transparent,
-                      thickness: 1,
-                    );
-                  },
-                ),
+    return SafeArea(
+      child: Scaffold(
+        appBar: CustomAppBar(title: crypto.symbol),
+        body: Obx(
+          () => Center(
+            child: controller.listTrade.isEmpty
+                ? const CircularProgressIndicator()
+                : ListView.separated(
+                    padding: const EdgeInsets.all(16),
+                    itemCount: controller.listTrade.length,
+                    itemBuilder: (context, index) {
+                      ListTradeResponse item = controller.listTrade[index];
+                      return TradeListItem(item: item);
+                    },
+                    separatorBuilder: (BuildContext context, int index) {
+                      return const Divider(
+                        color: Colors.transparent,
+                        thickness: 1,
+                      );
+                    },
+                  ),
+          ),
         ),
       ),
     );
