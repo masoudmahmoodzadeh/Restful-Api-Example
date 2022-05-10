@@ -6,6 +6,6 @@ Example project of CryptoCurrency app, developed with **Flutter**
 - **GetX**
 - **Clean Architecture**
 - **Binance Api**
-- [pie chart](https://pub.dev/packages/pie_chart)
-- [date format](https://pub.dev/packages/date_format)
+- **[Pie Chart](https://pub.dev/packages/pie_chart)**
+- **[Date Format](https://pub.dev/packages/date_format)**
 
