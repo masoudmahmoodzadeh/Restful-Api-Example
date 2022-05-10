@@ -1,4 +1,4 @@
-import 'package:restful_api_example/apis/base/method_type.dart';
+import 'package:restful_api_example/apis/method_type.dart';
 
 import '../api_constants.dart';
 import '../base_app_request.dart';

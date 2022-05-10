@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:restful_api_example/base/base_colors.dart';
-import 'package:restful_api_example/screens/crypto_screen.dart';
+import 'package:restful_api_example/screens/crypto/ui/crypto_screen.dart';
 
 void main() {
   runApp(const MyApp());

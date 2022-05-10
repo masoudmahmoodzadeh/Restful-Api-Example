@@ -1,13 +1,13 @@
 import 'package:http/http.dart';
-import 'package:restful_api_example/apis/base/method_type.dart';
-import 'package:restful_api_example/apis/base/requests/http_request.dart';
+import 'package:restful_api_example/apis/method_type.dart';
+import 'http_request.dart';
 
 import '../base_app_request.dart';
 
-class PatchRequests extends HttpRequest {
+class PutRequests extends HttpRequest {
   @override
   void call(BaseAppRequest req, callback) async {
-    var response = await patch(
+    var response = await put(
       getUriAddress(req),
       headers: req.getApiHeaders(),
     );
@@ -16,6 +16,6 @@ class PatchRequests extends HttpRequest {
 
   @override
   MethodType getMethod() {
-    return MethodType.patch;
+    return MethodType.put;
   }
 }

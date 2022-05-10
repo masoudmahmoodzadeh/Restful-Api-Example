@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:restful_api_example/base/base_colors.dart';
-import 'package:restful_api_example/screens/trade_screen.dart';
+import 'package:restful_api_example/screens/trade/ui/trade_screen.dart';
 
-import '../apis/base/api_manager.dart';
-import '../apis/base/response_callback.dart';
-import '../apis/list_crypto/list_crypto_request.dart';
-import '../apis/list_crypto/list_crypto_response.dart';
+import '../../../apis/api_manager.dart';
+import '../../../apis/response_callback.dart';
+import '../data/source/remote/list_crypto_request.dart';
+import '../data/source/remote/list_crypto_response.dart';
 
 class CryptoScreen extends StatefulWidget {
   const CryptoScreen({Key? key}) : super(key: key);

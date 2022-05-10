@@ -2,9 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
-import 'package:restful_api_example/apis/base/base_app_request.dart';
-import 'package:restful_api_example/apis/base/response_callback.dart';
 
+import 'base_app_request.dart';
 import 'requests/delete_requests.dart';
 import 'requests/get_params_requests.dart';
 import 'requests/get_requests.dart';
@@ -12,6 +11,8 @@ import 'requests/http_request.dart';
 import 'requests/patch_requests.dart';
 import 'requests/post_requests.dart';
 import 'requests/put_requests.dart';
+import 'response_callback.dart';
+
 
 class ApiManager {
   void sendRequest(BaseAppRequest request, ResponseCallback callback) async {

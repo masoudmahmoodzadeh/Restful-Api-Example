@@ -1,13 +1,13 @@
 import 'package:http/http.dart';
-import 'package:restful_api_example/apis/base/method_type.dart';
-import 'package:restful_api_example/apis/base/requests/http_request.dart';
+import 'package:restful_api_example/apis/method_type.dart';
+import 'http_request.dart';
 
 import '../base_app_request.dart';
 
-class PostRequests extends HttpRequest {
+class DeleteRequests extends HttpRequest {
   @override
   void call(BaseAppRequest req, callback) async {
-    var response = await post(
+    var response = await delete(
       getUriAddress(req),
       headers: req.getApiHeaders(),
     );
@@ -16,6 +16,6 @@ class PostRequests extends HttpRequest {
 
   @override
   MethodType getMethod() {
-    return MethodType.post;
+    return MethodType.delete;
   }
 }

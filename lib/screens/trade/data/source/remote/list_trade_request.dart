@@ -1,5 +1,5 @@
-import '../base/base_app_request.dart';
-import '../base/method_type.dart';
+import '../../../../../apis/base_app_request.dart';
+import '../../../../../apis/method_type.dart';
 
 class ListTradeRequest extends BaseAppRequest {
   final String symbol;

@@ -1,5 +1,6 @@
-import 'package:restful_api_example/apis/base/base_app_request.dart';
-import 'package:restful_api_example/apis/base/method_type.dart';
+import 'package:restful_api_example/apis/method_type.dart';
+
+import '../../../../../apis/base_app_request.dart';
 
 class ListCryptoRequest extends BaseAppRequest {
   @override
