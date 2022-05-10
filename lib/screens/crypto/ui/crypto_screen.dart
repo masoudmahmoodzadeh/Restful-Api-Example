@@ -21,6 +21,7 @@ class CryptoScreen extends StatelessWidget {
             child: controller.listCrypto.isEmpty
                 ? const CircularProgressIndicator()
                 : ListView.separated(
+                    physics: const BouncingScrollPhysics(),
                     padding: const EdgeInsets.all(16),
                     itemCount: controller.listCrypto.length,
                     itemBuilder: (context, index) {
