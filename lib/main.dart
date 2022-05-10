@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:restful_api_example/base/base_colors.dart';
-import 'package:restful_api_example/screens/crypto/ui/crypto_screen.dart';
+import 'package:get/get.dart';
+import 'package:restful_api_example/screens/app_routes.dart';
+import 'package:restful_api_example/utils/theme_manager.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,19 +12,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Restful Api Example',
-      theme: ThemeData(
-        scaffoldBackgroundColor: BaseColors.primary,
-        cardTheme: CardTheme(
-          color: BaseColors.card,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
-        ),
-        primarySwatch: Colors.blue,
-      ),
-      home: const CryptoScreen(),
+      theme: ThemeManager().create(),
+      initialRoute: AppRoutes.listCrypto,
+      getPages: AppRoutes().routes(),
     );
   }
 }

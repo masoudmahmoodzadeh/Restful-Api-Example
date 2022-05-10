@@ -7,9 +7,9 @@ import '../../../apis/api_manager.dart';
 import '../../../apis/response_callback.dart';
 
 class TradeScreen extends StatefulWidget {
-  final ListCryptoResponse crypto;
+  // final ListCryptoResponse crypto;
 
-  const TradeScreen({Key? key, required this.crypto}) : super(key: key);
+  const TradeScreen({Key? key}) : super(key: key);
 
   @override
   _TradeScreenState createState() => _TradeScreenState();
@@ -20,7 +20,7 @@ class _TradeScreenState extends State<TradeScreen> {
 
   @override
   void initState() {
-    _getListTrade(widget.crypto);
+    _getListTrade(null);
     super.initState();
   }
 

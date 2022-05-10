@@ -1,27 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:restful_api_example/base/base_colors.dart';
-import 'package:restful_api_example/screens/trade/ui/trade_screen.dart';
+import 'package:restful_api_example/screens/crypto/ui/crypto_controller.dart';
 
-import '../../../apis/api_manager.dart';
-import '../../../apis/response_callback.dart';
-import '../data/source/remote/list_crypto_request.dart';
+import '../../app_routes.dart';
 import '../data/source/remote/list_crypto_response.dart';
 
-class CryptoScreen extends StatefulWidget {
-  const CryptoScreen({Key? key}) : super(key: key);
+class CryptoScreen extends StatelessWidget {
+  final controller = Get.find<CryptoController>();
 
-  @override
-  _CryptoScreenState createState() => _CryptoScreenState();
-}
-
-class _CryptoScreenState extends State<CryptoScreen> {
-  List<ListCryptoResponse> listCrypto = [];
-
-  @override
-  void initState() {
-    _getListCrypto();
-    super.initState();
-  }
+  CryptoScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,91 +17,71 @@ class _CryptoScreenState extends State<CryptoScreen> {
       appBar: AppBar(
         title: const Text("Restful Api Example"),
       ),
-      body: Center(
-        child: listCrypto.isEmpty
-            ? const CircularProgressIndicator()
-            : ListView.separated(
-                padding: const EdgeInsets.all(16),
-                itemCount: listCrypto.length,
-                itemBuilder: (context, index) {
-                  ListCryptoResponse item = listCrypto[index];
-                  return InkWell(
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) {
-                          return TradeScreen(
-                            crypto: item,
-                          );
-                        },
-                      ));
-                    },
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 16, horizontal: 16),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              width: 50,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: BaseColors.primary,
-                                borderRadius: BorderRadius.circular(8),
+      body: Obx(
+        () => Center(
+          child: controller.listCrypto.isEmpty
+              ? const CircularProgressIndicator()
+              : ListView.separated(
+                  padding: const EdgeInsets.all(16),
+                  itemCount: controller.listCrypto.length,
+                  itemBuilder: (context, index) {
+                    ListCryptoResponse item = controller.listCrypto[index];
+                    return InkWell(
+                      onTap: () {
+                        Get.toNamed(AppRoutes.listTrade, arguments: item);
+                      },
+                      child: Card(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 16, horizontal: 16),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width: 50,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  color: BaseColors.primary,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: const Icon(
+                                  Icons.ac_unit,
+                                  color: Colors.white,
+                                ),
                               ),
-                              child: const Icon(
-                                Icons.ac_unit,
-                                color: Colors.white,
+                              SizedBox(width: 16),
+                              Expanded(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(item.symbol,
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                        )),
+                                    const SizedBox(height: 16),
+                                    Text(item.price,
+                                        style: const TextStyle(
+                                          color: BaseColors.greenLight,
+                                        )),
+                                  ],
+                                ),
                               ),
-                            ),
-                            SizedBox(width: 16),
-                            Expanded(
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(item.symbol,
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                      )),
-                                  const SizedBox(height: 16),
-                                  Text(item.price,
-                                      style: const TextStyle(
-                                        color: BaseColors.greenLight,
-                                      )),
-                                ],
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  return const Divider(
-                    color: Colors.transparent,
-                    thickness: 1,
-                  );
-                },
-              ),
+                    );
+                  },
+                  separatorBuilder: (BuildContext context, int index) {
+                    return const Divider(
+                      color: Colors.transparent,
+                      thickness: 1,
+                    );
+                  },
+                ),
+        ),
       ),
     );
-  }
-
-  void _getListCrypto() {
-    ApiManager apiManager = ApiManager();
-    apiManager.sendRequest(ListCryptoRequest(),
-        ResponseCallback<List<ListCryptoResponse>>(
-      onSuccess: ((json) {
-        List<ListCryptoResponse> data = (json as List)
-            .map((item) => ListCryptoResponse.fromJson(item))
-            .toList();
-
-        setState(() {
-          listCrypto = data;
-        });
-      }),
-    ));
   }
 }
