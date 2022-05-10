@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:restful_api_example/base/base_colors.dart';
 import 'package:restful_api_example/screens/crypto/ui/crypto_controller.dart';
+import 'package:restful_api_example/screens/crypto/ui/crypto_list_item.dart';
 
-import '../../app_routes.dart';
 import '../data/source/remote/list_crypto_response.dart';
 
 class CryptoScreen extends StatelessWidget {
@@ -26,52 +25,7 @@ class CryptoScreen extends StatelessWidget {
                   itemCount: controller.listCrypto.length,
                   itemBuilder: (context, index) {
                     ListCryptoResponse item = controller.listCrypto[index];
-                    return InkWell(
-                      onTap: () {
-                        Get.toNamed(AppRoutes.listTrade, arguments: item);
-                      },
-                      child: Card(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 16, horizontal: 16),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                width: 50,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                  color: BaseColors.primary,
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: const Icon(
-                                  Icons.ac_unit,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              SizedBox(width: 16),
-                              Expanded(
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(item.symbol,
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                        )),
-                                    const SizedBox(height: 16),
-                                    Text(item.price,
-                                        style: const TextStyle(
-                                          color: BaseColors.greenLight,
-                                        )),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
+                    return CryptoListItem(item: item);
                   },
                   separatorBuilder: (BuildContext context, int index) {
                     return const Divider(
