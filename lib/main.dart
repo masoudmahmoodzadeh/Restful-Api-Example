@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Restful Api Example',
+      debugShowCheckedModeBanner: false,
       theme: ThemeManager().create(),
       initialRoute: AppRoutes.listCrypto,
       getPages: AppRoutes().routes(),
