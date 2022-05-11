@@ -2,7 +2,8 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:http/http.dart';
-import 'package:restful_api_example/apis/method_type.dart';
+import '../method_type.dart';
+import 'http_request.dart';
 
 import '../api_error_callback.dart';
 import '../base_app_request.dart';
