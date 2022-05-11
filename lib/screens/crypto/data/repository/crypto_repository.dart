@@ -1,21 +1,24 @@
+import 'package:restful_api_example/apis/api_error_callback.dart';
+
 import '../../../../apis/api_manager.dart';
-import '../../../../apis/response_callback.dart';
 import '../source/remote/list_crypto_request.dart';
 import '../source/remote/list_crypto_response.dart';
 
-typedef ListCryptoCallBack = Function(List<ListCryptoResponse> data);
+typedef ListCryptoCallback = Function(List<ListCryptoResponse> data);
 
 class CryptoRepository {
-  void getListCrypto(ListCryptoCallBack callBack) {
+  void getListCrypto(ListCryptoCallback callback,
+      [ApiErrorCallback? errorCallback]) {
     ApiManager apiManager = ApiManager();
-    apiManager.sendRequest(ListCryptoRequest(),
-        ResponseCallback<List<ListCryptoResponse>>(
-      onSuccess: ((json) {
+    apiManager.sendRequest(
+      request: ListCryptoRequest(),
+      onSuccess: (json) {
         List<ListCryptoResponse> data = (json as List)
             .map((item) => ListCryptoResponse.fromJson(item))
             .toList();
-        callBack(data);
-      }),
-    ));
+        callback(data);
+      },
+      errorCallback: errorCallback,
+    );
   }
 }
