@@ -7,6 +7,7 @@ import 'package:restful_api_example/screens/trade/ui/trade_controller.dart';
 import 'package:restful_api_example/screens/trade/ui/trade_list_item.dart';
 
 import '../../../base/custom_app_bar.dart';
+import '../../app_routes.dart';
 
 class TradeScreen extends StatelessWidget {
   final controller = Get.find<TradeController>();
@@ -50,7 +51,10 @@ class TradeScreen extends StatelessWidget {
       primary: false,
       itemBuilder: (context, index) {
         ListTradeResponse item = controller.listTrade[index];
-        return TradeListItem(item: item);
+        return TradeListItem(item: item,onTap: (){
+          Get.toNamed(AppRoutes.ticker,arguments: controller.crypto);
+
+        });
       },
       separatorBuilder: (BuildContext context, int index) {
         return const Divider(
