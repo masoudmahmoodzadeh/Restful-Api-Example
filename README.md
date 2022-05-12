@@ -3,9 +3,12 @@
 Example project of CryptoCurrency app, developed with **Flutter**
 
 ## Technologies
-- **GetX**
+
 - **Clean Architecture**
 - **Binance Api**
+- **Handling Error HTTP**
+- **[GetX](https://pub.dev/packages/get)**
+- **[http package](https://pub.dev/packages/http)**
 - **[Pie Chart](https://pub.dev/packages/pie_chart)**
 - **[Date Format](https://pub.dev/packages/date_format)**
 
