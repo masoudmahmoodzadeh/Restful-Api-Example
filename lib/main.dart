@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:restful_api_example/screens/app_routes.dart';
-import 'package:restful_api_example/utils/theme_manager.dart';
+
+import 'base/root_binding.dart';
+import 'screens/app_routes.dart';
+import 'utils/theme_manager.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeManager().create(),
       initialRoute: AppRoutes.listCrypto,
+      initialBinding: RootBinding(),
       getPages: AppRoutes().routes(),
     );
   }

@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:http/http.dart';
-import '../method_type.dart';
 
 import '../api_error_callback.dart';
 import '../base_app_request.dart';
+import '../method_type.dart';
 import 'http_request.dart';
 
 class GetRequests extends HttpRequest {

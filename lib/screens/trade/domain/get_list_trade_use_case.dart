@@ -6,6 +6,6 @@ class GetListTradeUseCase {
   void getListTrade(String symbol, int limit, ListTradeCallback callback,
       [ApiErrorCallback? errorCallback]) {
     TradeRepository repository = TradeRepository();
-    repository.getListTrades(symbol, limit, callback);
+    repository.getListTrades(symbol, limit, callback, errorCallback);
   }
 }

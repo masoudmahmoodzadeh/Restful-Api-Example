@@ -1,3 +1,4 @@
+import '../../../../apis/api_error_callback.dart';
 import '../../../../apis/api_manager.dart';
 import '../source/remote/list_trade_request.dart';
 import '../source/remote/list_trade_response.dart';
@@ -5,7 +6,8 @@ import '../source/remote/list_trade_response.dart';
 typedef ListTradeCallback = Function(List<ListTradeResponse> data);
 
 class TradeRepository {
-  void getListTrades(String symbol, int limit, ListTradeCallback callback) {
+  void getListTrades(String symbol, int limit, ListTradeCallback callback,
+      [ApiErrorCallback? errorCallback]) {
     ApiManager apiManager = ApiManager();
     apiManager.sendRequest(
       request: ListTradeRequest(symbol, limit),
@@ -16,6 +18,7 @@ class TradeRepository {
 
         callback(data);
       },
+      errorCallback: errorCallback,
     );
   }
 }

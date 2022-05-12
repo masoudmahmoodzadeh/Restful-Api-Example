@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
-import 'package:restful_api_example/apis/api_error_callback.dart';
-import 'package:restful_api_example/screens/crypto/domain/get_list_crypto_use_case.dart';
+
+import '../../../apis/api_error_callback.dart';
+import '../../../apis/api_error_dialog.dart';
+import '../domain/get_list_crypto_use_case.dart';
 
 class CryptoController extends GetxController {
   var listCrypto = [].obs;
@@ -14,12 +16,24 @@ class CryptoController extends GetxController {
     GetListCryptoUseCase().getList(
       (data) => listCrypto.value = data,
       ApiErrorCallback(
-        onBadRequest: (error) {},
-        onUnauthorized: () {},
-        onServerError: (statusCode) {},
-        onSocketConnection: () {},
-        onTimeout: () {},
-        onFailed: (String message) {},
+        onBadRequest: (error) {
+          Get.find<ApiErrorDialog>().badRequest(error);
+        },
+        onUnauthorized: () {
+          Get.find<ApiErrorDialog>().unAuthorized();
+        },
+        onServerError: (statusCode) {
+          Get.find<ApiErrorDialog>().serverError(statusCode);
+        },
+        onSocketConnection: () {
+          Get.find<ApiErrorDialog>().noInternet();
+        },
+        onTimeout: () {
+          Get.find<ApiErrorDialog>().timeout();
+        },
+        onFailed: (String message) {
+          Get.find<ApiErrorDialog>().failed(message);
+        },
       ),
     );
   }
